@@ -103,3 +103,25 @@ describe('compare points by pivot', function() {
         expect(comparePolarAngle(pivot, a, b)).toEqual(true);
     });
 });
+
+describe('Sort by polar angle and pivot', function() {
+    var points = [
+        {x: 5,y: 3},
+        {x: 2,y: 7},
+        {x: 8,y: 9},
+        {x: 6,y: 5},
+        {x: 9,y: 5}
+    ];
+
+    var result = [
+        {x: 5,y: 3},
+        {x: 9,y: 5},
+        {x: 8,y: 9},
+        {x: 6,y: 5},
+        {x: 2,y: 7}
+    ];
+    sortPoints(points);
+    it('should order the pivot and the points', function() {
+        expect(points).toEqual(result);
+    });
+});

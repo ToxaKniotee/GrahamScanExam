@@ -60,3 +60,36 @@ function swapPivot(points) {
 function comparePolarAngle(pivot, a, b) {
     return !ccw(a, pivot, b);
 }
+
+function sortPoints(points) {
+    console.log(points.length);
+    swapPivot(points);
+    quickSort(points, 1, points.length - 1);
+}
+
+function quickSort(points, low, high) {
+    var i = low,
+        j = high;
+    var pivot = points[(low + high) / 2];
+
+    while (i <= j) {
+        while(comparePolarAngle(points[0], points[i], pivot)) {
+            console.log(i);
+            i++;
+        }
+
+        while (comparePolarAngle(points[0], pivot, points[j])) {
+            console.log(j);
+            j--;
+        }
+
+        if (i <= j) {
+            var temp = points[i];
+            points[i++] = points[j];
+            points[j--] = temp;
+        }
+    }
+
+    if (low < j) quickSort(points, left, j);
+    if (i < right) quickSort(points, i, right);
+}
