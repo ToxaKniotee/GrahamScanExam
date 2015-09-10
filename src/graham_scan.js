@@ -50,3 +50,14 @@ function swapPivot(points) {
     points[pivot_index] = temp;
     return points;
 }
+
+/**
+ * Chech if a < b based on polar angle with pivot
+ * @param  {Point} pivot
+ * @param  {Point} a
+ * @param  {Point} b
+ * @return {bool } true if a < b else false
+ */
+function comparePolarAngle(pivot, a, b) {
+    return !ccw(a, pivot, b);
+}

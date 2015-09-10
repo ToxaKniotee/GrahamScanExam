@@ -70,3 +70,35 @@ describe('Swap pivot', function() {
         expect(swapPivot(points)).toEqual(result);
     });
 });
+
+describe('compare points by pivot', function() {
+    it('Compare two points by polar angle to pivot <y', function() {
+        var pivot = {x: 4, y: 1};
+        var a     = {x: 7, y: 2};
+        var b     = {x: 3, y: 8};
+
+        expect(comparePolarAngle(pivot, a, b)).toEqual(true);
+    });
+
+    it('Compare two points by polar angle to pivot <x', function() {
+        var pivot = {x: 1, y:  1};
+        var a     = {x: 2, y:  0};
+        var b     = {x: 2, y: -1};
+        expect(comparePolarAngle(pivot, a, b)).toEqual(false);
+    });
+
+    it('If two points when theres a same y value', function() {
+        var pivot = {x: 6, y: 3};
+        var a     = {x: 2, y: 7};
+        var b     = {x: 7, y: 3};
+
+        expect(comparePolarAngle(pivot, a, b)).toEqual(false);
+    });
+
+    it('Compare when there are same x value', function() {
+        var pivot = {x: 0, y: 0};
+        var a     = {x: 1, y: 0};
+        var b     = {x: 0, y: 1};
+        expect(comparePolarAngle(pivot, a, b)).toEqual(true);
+    });
+});
