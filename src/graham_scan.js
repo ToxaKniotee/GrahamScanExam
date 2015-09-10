@@ -48,7 +48,6 @@ function swapPivot(points) {
     var temp = points[0];
     points[0] = points[pivot_index];
     points[pivot_index] = temp;
-    return points;
 }
 
 /**

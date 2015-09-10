@@ -67,7 +67,8 @@ describe('Swap pivot', function() {
             {x: 21, y: 61}, /* 6 */
             {x: 95, y: 75}  /* 7 */
         ];
-        expect(swapPivot(points)).toEqual(result);
+        swapPivot(points);
+        expect(points).toEqual(result);
     });
 });
 
