@@ -42,3 +42,11 @@ function findPivot(points) {
     if (y_count == 0) return y_index;
     return x_index;
 }
+
+function swapPivot(points) {
+    var pivot_index = findPivot(points);
+    var temp = points[0];
+    points[0] = points[pivot_index];
+    points[pivot_index] = temp;
+    return points;
+}

@@ -43,3 +43,30 @@ describe('Find pivot index', function() {
        expect(findPivot(points)).toEqual(6);
    });
 });
+
+describe('Swap pivot', function() {
+    it('It should move the pivot to the position 0 of the index', function() {
+        var points = [
+            {x: 21, y: 61}, /* 0 */
+            {x: 90, y: 89}, /* 1 */
+            {x: 84, y: 48}, /* 2 */
+            {x: 49, y: 30}, /* 3 */
+            {x: 14, y: 25}, /* 4 */
+            {x:  3, y: 21}, /* 5 */
+            {x:  2, y: 21}, /* 6 */
+            {x: 95, y: 75}  /* 7 */
+        ];
+
+        var result = [
+            {x:  2, y: 21}, /* 0 */
+            {x: 90, y: 89}, /* 1 */
+            {x: 84, y: 48}, /* 2 */
+            {x: 49, y: 30}, /* 3 */
+            {x: 14, y: 25}, /* 4 */
+            {x:  3, y: 21}, /* 5 */
+            {x: 21, y: 61}, /* 6 */
+            {x: 95, y: 75}  /* 7 */
+        ];
+        expect(swapPivot(points)).toEqual(result);
+    });
+});
