@@ -60,3 +60,46 @@ function swapPivot(points) {
 function comparePolarAngle(pivot, a, b) {
     return !ccw(a, pivot, b);
 }
+
+function sortPoints(points) {
+    swapPivot(points);
+
+    var pivot = points[0];
+    var middle = Math.floor(points.length / 2),
+        left = points.slice(1, middle),
+        right = points.slice(middle)
+        params = merge(pivot, mergeSort(pivot, left), mergeSort(pivot, right));
+
+    var result = [pivot];
+    result = result.concat(params);
+
+    result.unshift(0, points.length);
+    points.splice.apply(points, result);
+}
+
+function mergeSort(pivot, points) {
+    if (points.length < 2) return points;
+
+    var middle = Math.floor(points.length / 2),
+        left = points.slice(0, middle),
+        right = points.slice(middle)
+        params = merge(pivot, mergeSort(pivot, left), mergeSort(pivot, right));
+
+    return params;
+}
+
+function merge(pivot, left, right) {
+    var result = [],
+        ir = 0,
+        il = 0;
+
+    while (il < left.length && ir < right.length) {
+        if (comparePolarAngle(pivot, left[il], right[ir])) {
+            result.push(left[il++]);
+        } else {
+            result.push(right[ir++]);
+        }
+    }
+
+    return result.concat(left.slice(il)).concat(right.slice(ir));
+}
