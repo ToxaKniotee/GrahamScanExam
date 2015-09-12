@@ -42,6 +42,17 @@ describe('Find pivot index', function() {
         ];
        expect(findPivot(points)).toEqual(6);
    });
+
+   it('find the mimium y in the row 0', function() {
+       var points = [
+           {x: 5,y: 3},
+           {x: 2,y: 7},
+           {x: 8,y: 9},
+           {x: 6,y: 5},
+           {x: 9,y: 5}
+       ];
+       expect(findPivot(points)).toEqual(0);
+   });
 });
 
 describe('Swap pivot', function() {

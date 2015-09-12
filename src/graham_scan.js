@@ -21,7 +21,7 @@ function findPivot(points) {
         x_index = 0,
         x_count = 0;
 
-    for (var i = 0; i < points.length; i++) {
+    for (var i = 1; i < points.length; i++) {
         if (points[i].y == y_min) {
             y_count++;
         } else if (points[i].y < y_min) {
