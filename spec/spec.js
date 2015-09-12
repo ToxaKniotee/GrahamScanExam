@@ -136,3 +136,25 @@ describe('Sort by polar angle and pivot', function() {
         expect(points).toEqual(result);
     });
 });
+
+describe('Graham Algorithm', function() {
+    it('Should find the convext hull', function() {
+        var points = [
+            {x: 5,y: 3},
+            {x: 2,y: 7},
+            {x: 8,y: 9},
+            {x: 6,y: 5},
+            {x: 9,y: 5}
+        ];
+
+        var result = [
+            {x: 5,y: 3},
+            {x: 9,y: 5},
+            {x: 8,y: 9},
+            {x: 2,y: 7}
+        ];
+
+        var middle = grahamScan(points);
+        expect(middle).toEqual(result);
+    });
+});

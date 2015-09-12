@@ -103,3 +103,31 @@ function merge(pivot, left, right) {
 
     return result.concat(left.slice(il)).concat(right.slice(ir));
 }
+
+function grahamScan(points) {
+    var stack = [];
+
+    /* Sorth the points */
+    sortPoints(points);
+
+    /* Get the pivot */
+    var pivot = points[0];
+
+    /* Insert the first 2 points in the stack */
+    stack = stack.concat(points.slice(0, 2));
+
+    for (var i = 2; i < points.length; i++) {
+        var p1 = stack[stack.length - 2];
+        var p2 = stack[stack.length - 1];
+        var p3 = points[i]
+
+        if (ccw(p1, p2, p3)) {
+            stack.push(p3);
+        } else {
+            stack.pop();
+            i--;
+        }
+    }
+
+    return stack;
+}
