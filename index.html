@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Graham Scan</title>
+    <script src="src/jquery.js"></script>
+    <script src="src/angular.js"></script>
+    <script src="src/canvas.js"></script>
+    <script src="src/graham_scan.js"></script>
+    <script src="src/controller.js"></script>
+</head>
+<body id="body" ng-controller="GrahamScan">
+    <h2>Agregar Punto</h2>
+    <!-- <form onsubmit="addPoint()"> -->
+    <form onsubmit="addPoint()">
+        x: <input type="text" ng-model="x"><br>
+        y: <input type="text" ng-model="y"><br>
+        <input type="submit" value="Agregar Punto">
+    </form>
+
+    <h2>Puntos</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>X</th>
+            <th>Y</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="point in points">
+            <td>{{$index}}</td>
+            <td>{{point.x}}</td>
+            <td>{{point.y}}</td>
+            <td><input type="button" value="Eliminar" onclick="removePoint()" ng-click="removePoint($index)"></td>
+        </tr>
+    </table>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var width = canvas.width;
+        var height = canvas.height;
+        var context = canvas.getContext('2d');
+    </script>
+</body>
+</html>

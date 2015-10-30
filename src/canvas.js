@@ -1,9 +1,4 @@
-var canvas = document.getElementById('canvas');
-var width = canvas.width;
-var height = canvas.height;
-var context = canvas.getContext('2d');
-
-function drawPoint(context, point, radius, color) {
+function drawPoint(point, radius, color) {
     /* Optional arguments */
     radius = radius || 3;
     color = color || '#00F';
@@ -15,7 +10,7 @@ function drawPoint(context, point, radius, color) {
     context.fill();
 }
 
-function drawLine(context, point_1, point_2, color) {
+function drawLine(point_1, point_2, color) {
     /* Optional arguments */
     color = color || 'red';
 
@@ -27,17 +22,17 @@ function drawLine(context, point_1, point_2, color) {
     context.stroke();
 }
 
-function drawPoints(context, points) {
+function drawPoints(points) {
     for (var i = 0; i < points.length; i++) {
-        drawPoint(context, points[i]);
+        drawPoint(points[i]);
     }
 }
 
-function drawLines(context, points) {
+function drawLines(points) {
     for (var i = 1; i < points.length; i++) {
-        drawLine(context, points[i-1], points[i]);
+        drawLine(points[i-1], points[i]);
     }
-    drawLine(context, points[points.length - 1], points[0]);
+    drawLine(points[points.length - 1], points[0]);
 }
 
 function findEdges(points) {
@@ -71,4 +66,8 @@ function normalizePoints(points, border_offset) {
     }
 
     return result;
+}
+
+function deleteCanvas() {
+    context.clearRect(0, 0, width, height);
 }
